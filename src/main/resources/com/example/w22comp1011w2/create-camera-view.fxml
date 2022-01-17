@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.w22comp1011w2.CreateCameraViewController">
+   <children>
+      <VBox alignment="CENTER" layoutX="181.0" layoutY="43.0" spacing="30.0">
+         <children>
+            <Label text="Create a Camera Object" />
+            <GridPane prefHeight="176.0" prefWidth="247.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.20001220703125" minWidth="10.0" prefWidth="77.39996337890625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.5999755859375" minWidth="10.0" prefWidth="131.80003662109374" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Manufacturer" />
+                  <Label text="Model" GridPane.rowIndex="1" />
+                  <Label text="Resolution" GridPane.rowIndex="2" />
+                  <Label text="SLR" GridPane.rowIndex="3" />
+                  <Label text="Price" GridPane.rowIndex="4" />
+                  <ComboBox prefWidth="150.0" promptText="Select Make" GridPane.columnIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <Button mnemonicParsing="false" text="Submit" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
