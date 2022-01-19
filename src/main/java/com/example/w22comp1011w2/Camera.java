@@ -1,6 +1,7 @@
 package com.example.w22comp1011w2;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Camera {
@@ -37,11 +38,22 @@ public class Camera {
      * @param make - the manufacturer of camera
      */
     public void setMake(String make) {
-        List<String> validMakes = Arrays.asList("Canon", "Nikon", "Sony", "Fujifilm");
+        List<String> validMakes = getManufacturers();
         if (validMakes.contains(make))
             this.make = make;
         else
             throw new IllegalArgumentException("Make must be in the list of: " + validMakes);
+    }
+
+    /**
+     * This method will return a list of all the valid camera manufacturers
+     * @return
+     */
+
+    public static List<String> getManufacturers(){
+        List<String> brands = Arrays.asList("Canon", "Nikon", "Sony", "Fujifilm", "Samsung");
+        Collections.sort(brands);
+        return brands;
     }
 
     public String getModel() {
@@ -77,6 +89,10 @@ public class Camera {
             this.price = price;
         else
             throw new IllegalArgumentException("price must be in the range 10-5000");
+    }
+
+    public String toString(){
+        return String.format("%s-%s, %dMp, $%.2f", make, model, resolution, price);
     }
 }
 

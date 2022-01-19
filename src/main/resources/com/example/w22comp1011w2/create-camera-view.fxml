@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.w22comp1011w2.CreateCameraViewController">
    <children>
-      <VBox alignment="CENTER" layoutX="181.0" layoutY="43.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="181.0" layoutY="43.0" prefHeight="328.0" prefWidth="247.0" spacing="30.0">
          <children>
             <Label text="Create a Camera Object" />
             <GridPane prefHeight="176.0" prefWidth="247.0">
@@ -35,14 +34,15 @@
                   <Label text="Resolution" GridPane.rowIndex="2" />
                   <Label text="SLR" GridPane.rowIndex="3" />
                   <Label text="Price" GridPane.rowIndex="4" />
-                  <ComboBox prefWidth="150.0" promptText="Select Make" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="brandComboBox" prefWidth="150.0" promptText="Select Make" GridPane.columnIndex="1" />
+                  <TextField fx:id="modelTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="resolutionTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="slrCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Submit" />
+            <Button mnemonicParsing="false" onAction="#createCamera" text="Submit" />
+            <Label fx:id="resultLabel" text="Label" />
          </children>
       </VBox>
    </children>
