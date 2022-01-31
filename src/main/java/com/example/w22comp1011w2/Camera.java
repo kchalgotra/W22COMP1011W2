@@ -11,9 +11,20 @@ public class Camera {
     private double price;
 
     public Camera(String make, String model, int res, boolean slr, double price) {
-        setResolution(res);
-        setMake(make);
-        setModel(model);
+        if (res >=2 && res <=100){
+            setResolution(res);
+        }else
+            throw new IllegalArgumentException("resolution should be between 2-100");
+        List<String> validMakes = getManufacturers();
+        if(validMakes.contains(make)){
+            setMake(make);
+        }else
+            throw new IllegalArgumentException("Make should be in the list of "+ validMakes);
+
+        if(!model.isBlank()){
+            setModel(model);
+        }else
+            throw new IllegalArgumentException("Model can not be blank");
         setSlr(slr);
         setPrice(price);
     }
