@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Camera {
+    private int cameraID;
     private int resolution;
     private String make, model;
     private boolean slr;
@@ -27,6 +28,29 @@ public class Camera {
             throw new IllegalArgumentException("Model can not be blank");
         setSlr(slr);
         setPrice(price);
+        cameraID = -1;
+
+    }
+
+    /**
+     *
+     *This is an overloaded constructor
+     */
+    public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price){
+        this(make,model,resolution,slr,price);
+        setCameraID(cameraID);
+    }
+
+    public int getCameraID() {
+        return cameraID;
+    }
+
+    public void setCameraID(int cameraID) {
+        if(cameraID<0){
+            throw new IllegalArgumentException("CameraID must be greater than 0");
+        }else{
+            this.cameraID = cameraID;
+        }
     }
 
     public int getResolution() {

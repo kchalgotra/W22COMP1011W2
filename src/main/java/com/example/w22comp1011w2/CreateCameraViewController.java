@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.format.ResolverStyle;
+import java.util.Formatter;
 import java.util.ResourceBundle;
 
 public class CreateCameraViewController implements Initializable {
@@ -96,9 +99,14 @@ public class CreateCameraViewController implements Initializable {
             if(resolution !=-1 && price !=-1) {
                 try{
                     Camera newCamera = new Camera(make, model, resolution, slr, price);
+                    Formatter formatter = new Formatter(new File("camera.txt"));
+                    formatter.format("New Camera: %s\n", newCamera);
+                    formatter.close();
                     resultLabel.setText(newCamera.toString());
                 }catch (IllegalArgumentException e){
                     resultLabel.setText(e.getMessage());
+                }catch (FileNotFoundException e){
+                    resultLabel.setText("Error Writing to File: "+e.getMessage());
                 }
             }
     }
