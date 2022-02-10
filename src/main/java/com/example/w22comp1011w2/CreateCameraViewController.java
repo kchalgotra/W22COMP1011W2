@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.format.ResolverStyle;
 import java.util.Formatter;
 import java.util.ResourceBundle;
@@ -102,11 +103,14 @@ public class CreateCameraViewController implements Initializable {
                     Formatter formatter = new Formatter(new File("camera.txt"));
                     formatter.format("New Camera: %s\n", newCamera);
                     formatter.close();
+                    DBUtility.insertCameraIntoDB(newCamera);
                     resultLabel.setText(newCamera.toString());
                 }catch (IllegalArgumentException e){
                     resultLabel.setText(e.getMessage());
                 }catch (FileNotFoundException e){
                     resultLabel.setText("Error Writing to File: "+e.getMessage());
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
     }
