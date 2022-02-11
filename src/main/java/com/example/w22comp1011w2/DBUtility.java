@@ -1,11 +1,13 @@
 package com.example.w22comp1011w2;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DBUtility {
-    private static String user = "root";
-    private static String password = "123456";
-    private static String connectURL = "jdbc:mysql://localhost:3306/w22Java";
+    private static String user = "Kashish200471366";
+    private static String password = "b11Oph_NCu";
+    private static String connectURL = "jdbc:mysql://172.31.22.43:3306/Kashish200471366";
 
     /**
      * This method will send the camera object to DB and return the cameraID
@@ -50,4 +52,46 @@ public class DBUtility {
         return cameraID;
 
     }
+
+
+    /**
+     * This method will return a list of all cameras and their associated number of sales
+     */
+
+    public static ArrayList<Camera> getCamerasFromDB(){
+
+        ArrayList<Camera> cameras = new ArrayList<>();
+
+        //query DB and create Camera objects / add them to the list
+        String sql = "SELECT cameras.cameraID, make, model, resolution, price, slr, count(salesID) AS 'Units Sold'   \n" +
+                "from cameras \n" +
+                "INNER JOIN cameraSales ON cameras.cameraID = cameraSales.cameraID\n" +
+                "group by cameras.cameraId; ";
+
+        try(
+                Connection conn = DriverManager.getConnection(connectURL,user,password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+                ) {
+            while (resultSet.next()){
+                int cameraID = resultSet.getInt("cameraID");
+                String make = resultSet.getString("make");
+                String model = resultSet.getString("model");
+                int resolution = resultSet.getInt("resolution");
+                double price = resultSet.getDouble("price");
+                boolean slr = resultSet.getBoolean("slr");
+                int unitsSold = resultSet.getInt("Units Sold");
+
+
+                Camera newCamera = new Camera(cameraID,make,model,resolution,slr,price,unitsSold );
+                cameras.add(newCamera);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cameras;
+
+    }
 }
+

@@ -10,6 +10,7 @@ public class Camera {
     private String make, model;
     private boolean slr;
     private double price;
+    private int unitsSold;
 
     public Camera(String make, String model, int res, boolean slr, double price) {
         if (res >=2 && res <=100){
@@ -39,6 +40,23 @@ public class Camera {
     public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price){
         this(make,model,resolution,slr,price);
         setCameraID(cameraID);
+    }
+
+    public Camera(int cameraID, String make, String model, int resolution, boolean slr, double price, int unitsSold){
+        this(make,model,resolution,slr,price);
+        setUnitsSold(unitsSold);
+        setCameraID(cameraID);
+    }
+
+    public int getUnitsSold() {
+        return unitsSold;
+    }
+
+    public void setUnitsSold(int unitsSold) {
+        if(unitsSold >= 0){
+            this.unitsSold = unitsSold;
+        }
+        else throw new IllegalArgumentException("units sold should be >= 0");
     }
 
     public int getCameraID() {
@@ -120,10 +138,10 @@ public class Camera {
     }
 
     public void setPrice(double price) {
-        if (price >= 10 && price <= 5000)
+        if (price >= 10 && price <= 7000)
             this.price = price;
         else
-            throw new IllegalArgumentException("price must be in the range 10-5000");
+            throw new IllegalArgumentException("price must be in the range 10-7000");
     }
 
     public String toString(){

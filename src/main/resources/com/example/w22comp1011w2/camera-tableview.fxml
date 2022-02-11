@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.w22comp1011w2.CameraTableViewController">
+   <children>
+      <BorderPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label text=" Camera Sales Totals" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="cameraIDColumn" prefWidth="75.0" text="Camera ID" />
+                <TableColumn fx:id="makeColumn" prefWidth="75.0" text="Make" />
+                  <TableColumn fx:id="modelColumn" prefWidth="75.0" text="Model" />
+                  <TableColumn fx:id="resolutionColumn" prefWidth="75.0" text="Resolution" />
+                  <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+                  <TableColumn fx:id="slrColumn" prefWidth="75.0" text="SLR" />
+                  <TableColumn fx:id="unitsSoldColumn" prefWidth="75.0" text="Units Sold" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </center>
+         <bottom>
+            <Label fx:id="highestRevenueLabel" text="Label" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
